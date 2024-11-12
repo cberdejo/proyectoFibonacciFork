@@ -12,6 +12,8 @@ def fibonacci_iterative(n: int) -> int:
     if n < 2:
         return n
 
+
+
     n0 = 0
     n1 = 1
     nth = 0
