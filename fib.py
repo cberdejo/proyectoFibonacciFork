@@ -1,5 +1,4 @@
 import argparse
-from functools import cache
 
 
 def fibonacci_iterative(n: int) -> int:
@@ -13,6 +12,8 @@ def fibonacci_iterative(n: int) -> int:
     if n < 2:
         return n
 
+
+
     n0 = 0
     n1 = 1
     nth = 0
@@ -24,7 +25,6 @@ def fibonacci_iterative(n: int) -> int:
     return nth
 
 
-@cache
 def fibonacci_recursive(n: int) -> int:
     """
     Computes the n-th Fibonacci number
@@ -35,11 +35,15 @@ def fibonacci_recursive(n: int) -> int:
         raise ValueError("n must be greater than or equal to zero.")
     if n < 2:
         return n
+    n0 = 0
+    n1 = 1
+    for _ in range(n):
+        nth = n0 + n1
+        n0 = n1n1 = nth
+    return n0
 
-    return fibonacci_recursive(n-1) + fibonacci_recursive(n-2)
 
-
-
+cache = {}
 
 # return fibonacci_recursive(n-1) + fibonacci_recursive(n-2)
 
@@ -49,5 +53,5 @@ if __name__ == "__main__":
     parser.add_argument('nth', type=int, help="Nth fibonacci number.")  # positional argument
     args = parser.parse_args()
 
-    result = fibonacci_recursive(args.nth)
+    result = fibonacci_iterative(args.nth)
     print(result)
